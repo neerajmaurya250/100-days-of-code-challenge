@@ -1,0 +1,48 @@
+<html>
+<body>
+<form action="webguru.php" method="POST">
+<label>value 1</label>
+<input type="text" name="val1" type="Text"><br>
+<label>value 2</label>
+<input type="text" name="val2" type="Text"><br>
+
+<input type="Submit" name="S1" value="Sum">
+<input type="Submit" name="S2" value="Substraction">
+<input type="Submit" name="S3" value="Multipcation">
+<input type="Submit" name="S4" value="Division">
+</form>
+
+</html>
+
+<?php
+
+	if(isset($_POST["S1"]))
+	{
+	$n1=$_POST["val1"];
+	$n2=$_POST["val2"];
+	$r=$n1+$n2;
+     echo "the sum of number  " .$n1." and ".$n2." is ". $r;
+
+    }
+    if(isset($_POST["S2"]))
+    {
+   $n1=$_POST["val1"];
+	$n2=$_POST["val2"];
+	$r=$n1-$n2;
+	echo "The difference of number ".$n1." and ".$n2." is ".$r;
+    }
+    if(isset($_POST["S3"]))
+    {
+   $n1=$_POST["val1"];
+	$n2=$_POST["val2"];
+	$r=$n1/$n2;
+	echo "The multiplication of number ".$n1." and ".$n2." is ".$r;
+}
+  if(isset($_POST["S4"]))
+    {
+   $n1=$_POST["val1"];
+	$n2=$_POST["val2"];
+	$r=$n1*$n2;
+	echo  $r;
+}
+?>
