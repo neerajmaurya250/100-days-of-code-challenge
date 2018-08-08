@@ -1,0 +1,134 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace List_box
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        int i,j;
+        private void bntadd_Click(object sender, EventArgs e)
+        {
+            bool p = true, f=true;
+
+            if(txtadd.Text=="")
+                MessageBox.Show("Please type some item.");
+
+            else
+            {
+                for ( i = 0;i < listBox1.Items.Count; i++)
+                    if (txtadd.Text == listBox1.Items[i].ToString())
+                    {
+
+                        p = false;
+                    }
+                
+                for (j = 0; j < listBox2.Items.Count; j++)
+                    if (txtadd.Text == listBox2.Items[j].ToString())
+                    {
+
+                        f = false;
+                    }
+
+                if (p == true && f==true)
+                {
+                    listBox1.Items.Add(txtadd.Text);
+                    //txtadd.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Item Already exist in ListBox");
+
+                }
+            }
+            txtadd.Text = "";
+        }
+
+
+        private void txtadd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                bntadd_Click(sender, e);
+        }
+        
+        
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (listBox1.Items.Count == 0)
+                MessageBox.Show("Does Not Contain any Item.");
+            else
+            {
+                for (i = 0; i < listBox1.Items.Count; i++)
+                {
+                    listBox2.Items.Add(listBox1.Items[i]);
+                }
+                listBox1.Items.Clear();
+            }
+            }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (listBox2.Items.Count == 0)
+                MessageBox.Show("Does Not Contain any Item.");
+            else
+            {
+                for (i = 0; i < listBox2.Items.Count; i++)
+                {
+                    listBox1.Items.Add(listBox2.Items[i]);
+                }
+                listBox2.Items.Clear();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listBox1.SelectedItems.Count == 0)
+                MessageBox.Show("Please select any Item.");
+            else
+            {
+                while (listBox1.SelectedItems.Count != 0)
+                {
+                    listBox2.Items.Add(listBox1.SelectedItems[0]);
+                    listBox1.Items.Remove(listBox1.SelectedItems[0]);
+                }
+
+               
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listBox2.SelectedItems.Count == 0)
+                MessageBox.Show("Please select any Item.");
+            else
+            {
+                while (listBox2.SelectedItems.Count != 0)
+                {
+                    listBox1.Items.Add(listBox2.SelectedItems[0]);
+                    listBox2.Items.Remove(listBox2.SelectedItems[0]);
+                }
+            }
+        }
+    }
+}
